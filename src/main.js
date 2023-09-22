@@ -9,9 +9,9 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
 import {faTelegram} from "@fortawesome/free-brands-svg-icons"
-import {faEnvelope, faCaretDown, faAngleRight, faAngleLeft} from "@fortawesome/free-solid-svg-icons"
+import {faBars ,faEnvelope, faCaretDown, faAngleRight, faAngleLeft} from "@fortawesome/free-solid-svg-icons"
 
-library.add(faTelegram, faEnvelope, faCaretDown, faAngleRight, faAngleLeft)
+library.add(faBars, faTelegram, faEnvelope, faCaretDown, faAngleRight, faAngleLeft)
 
 const app = createApp(App)
 

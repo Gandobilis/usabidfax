@@ -6,5 +6,5 @@ const {logo} = useHeader()
 
 <template>
   <!-- Logo -->
-  <img :src="logo" alt="usa bid fax logo" width="183" height="70">
+  <img :src="logo" alt="usa bid fax logo" class="w-28 lg:w-44 h-10 lg:h-16">
 </template>

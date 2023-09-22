@@ -5,6 +5,8 @@ module.exports = {
         "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
     theme: {
+        // Temp data.
+        // Could be adjusted.
         container: {
             screens: {
                 sm: "640px",

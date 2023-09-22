@@ -1,6 +1,6 @@
 <script setup>
 import useHeader from "@/composables/header"
-import NavLink from "@/components/NavLink.vue"
+import NavLink from "@/components/Nav/NavLink.vue"
 
 const {navMenu} = useHeader()
 </script>
