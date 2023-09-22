@@ -5,14 +5,14 @@ export default function useHeader() {
      Name attributes could be added
      corresponding to defined ones in routes file.
     */
-    const navLinks = [
+    const navMenu = [
         {
             title: 'Main',
             path: '/'
         },
         {
             title: 'English',
-            path: '/' // Must be changed after localization is implemented at the backend.
+            path: '/' // Must be changed after localization is implemented at the backend/frontend.
         },
         {
             title: 'Contact',
@@ -22,6 +22,6 @@ export default function useHeader() {
 
     return {
         logo,
-        navLinks
+        navMenu
     }
 }
