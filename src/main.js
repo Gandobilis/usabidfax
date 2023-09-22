@@ -13,10 +13,10 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import {faUserSecret} from '@fortawesome/free-solid-svg-icons'
 import {faTelegram} from "@fortawesome/free-brands-svg-icons";
-import {faEnvelope} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faCaretDown} from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
-library.add(faTelegram, faEnvelope)
+library.add(faTelegram, faEnvelope, faCaretDown)
 
 createApp(App)
     .use(router)

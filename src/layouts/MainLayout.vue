@@ -5,8 +5,10 @@ import Header from "@/components/Header.vue";
 
 <template>
   <Header/>
-  <main class="h-60 bg-gray-200">
-    <slot/>
+  <main class="bg-gray-200">
+    <div class="max-w-7xl mx-auto">
+      <slot/>
+    </div>
   </main>
   <Footer/>
 </template>
