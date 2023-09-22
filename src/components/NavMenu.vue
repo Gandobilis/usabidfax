@@ -8,12 +8,8 @@ const {navMenu} = useHeader()
 <template>
   <!-- Nav Menu -->
   <nav>
-    <ul class="flex space-x-8">
+    <ul class="flex gap-x-8">
       <nav-link v-for="(link, index) in navMenu" :key="index" :link="link"/>
     </ul>
   </nav>
 </template>
-
-<style scoped>
-
-</style>
