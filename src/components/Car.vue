@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   car: {
     type: Object,
     required: true
@@ -8,9 +8,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="border p-1.5 bg-white divide-y">
+  <div class="border p-1.5 bg-[#F8F9FA] divide-y cursor-pointer">
     <div class="relative">
-      <img :src="car.image" alt="car">
+      <img :src="car.images[0]" alt="car">
       <span
           style="clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);"
           class="bg-[#4ADD31] absolute font-bold text-white pl-4 pr-8 py-2.5 bottom-[10%]">${{car.price}}</span>
@@ -22,7 +22,7 @@ defineProps({
     </div>
     <div class="divide-y">
       <div class="flex items-center gap-x-1">
-        <p class="ml-3">Auction: <span class="bg-red-700 text-white px-1" v-text="car.auction"/></p>
+        <p class="ml-3">Auction: <span class="bg-red-700 px-1 text-white" v-text="car.auction"/></p>
         <img class="h-fit" v-if="car.status === 'on approval'"
              src="https://bidfax.info/templates/ru/dleimages/onapproval2.png"/>
         <img class="h-fit" v-if="car.status === 'sold' " src="https://bidfax.info/templates/ru/dleimages/sold2.png"/>

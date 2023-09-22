@@ -28,13 +28,13 @@ const changeFloor = (floor) => {
   <div class="relative">
     <div
         @click="toggleDropDown"
-        class="flex space-x-2 items-center w-full font-medium leading-6 py-3 pl-4 pr-3 focus:outline-0 rounded-md border border-black border-opacity-40 cursor-pointer">
+        class="flex w-full cursor-pointer items-center rounded-md border border-black border-opacity-40 py-3 pr-3 pl-4 font-medium leading-6 space-x-2 focus:outline-0">
       <p v-text="selected"/>
       <font-awesome-icon :icon="['fas', 'caret-down']" size="xs" :class="{'rotate-180': showDropDown}"/>
     </div>
     <div :class="showDropDown ? 'block' : 'hidden'"
-         class="bg-white z-10 top-14 absolute py-2.5 pl-3 pr-1 w-full rounded-md border border-black border-opacity-40">
-      <div class="scroll-container flex flex-col gap-y-4 max-h-60 overflow-y-scroll">
+         class="absolute top-14 z-10 w-full rounded-md border border-black border-opacity-40 bg-white pr-1 pl-3 py-2.5">
+      <div class="flex max-h-60 flex-col gap-y-4 overflow-y-scroll scroll-container">
         <p class="cursor-pointer font-medium leading-6" v-for="floor in options.length"
            :key="options.length - floor + 1"
            @click="changeFloor(options.length - floor)">

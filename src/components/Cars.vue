@@ -12,12 +12,12 @@ const cars = Array(9).fill({
   Damage: 'Front End',
   mileage: '48071 mile (Actual)',
   dateOfSale: '20.09.2023',
-  image: 'https://bidfax.info/uploads/posts/2023-09/22/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg'
+  images: Array(7).fill('https://bidfax.info/uploads/posts/2023-09/22/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg')
 });
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-x-7 gap-y-5 mt-3">
+  <div class="mt-3 grid grid-cols-3 gap-x-7 gap-y-5">
     <Car v-for="(car, index) in cars" :car="car" :key="index"/>
   </div>
 </template>

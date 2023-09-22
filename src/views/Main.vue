@@ -2,6 +2,8 @@
 import MainLayout from "@/layouts/MainLayout.vue";
 import DropDown from "@/components/DropDown.vue";
 import Cars from "@/components/Cars.vue";
+import Featured from "@/components/Featured.vue";
+import Panel from "@/components/Panel.vue";
 
 const makes = ["Toyota", "Honda", "Ford", "Chevrolet", "Nissan", "BMW", "Mercedes-Benz", "Volkswagen", "Audi", "Hyundai"];
 
@@ -22,10 +24,14 @@ const models = [
 
 <template>
   <MainLayout>
-      <div class="py-8 pl-4 space-y-7 mt-3 bg-white">
+    <div class="flex flex-col gap-y-3 space-y-5">
+      <div class="mt-3 bg-white py-8 pl-4 space-y-7">
         <DropDown class="w-1/2" :options="makes" :selected="makes[0]"/>
         <DropDown class="w-1/2" :options="models[0]" :selected="models[0][0]"/>
       </div>
+    <Featured />
     <Cars />
+    <Panel />
+    </div>
   </MainLayout>
 </template>

@@ -5,8 +5,8 @@ import Header from "@/components/Header.vue";
 
 <template>
   <Header/>
-  <main class="bg-gray-200">
-    <div class="max-w-7xl mx-auto">
+  <main class="bg-[#E9ECEF]">
+    <div class="mx-auto max-w-7xl">
       <slot/>
     </div>
   </main>
