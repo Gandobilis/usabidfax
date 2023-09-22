@@ -11,11 +11,11 @@ import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {faTelegram} from "@fortawesome/free-brands-svg-icons"
 import {faEnvelope, faCaretDown, faAngleRight, faAngleLeft} from "@fortawesome/free-solid-svg-icons"
 
-library.add(faTelegram, faEnvelope, faCaretDown, faAngleRight, faAngleLeft);
+library.add(faTelegram, faEnvelope, faCaretDown, faAngleRight, faAngleLeft)
 
 const app = createApp(App)
 
 app.use(router)
     .component('font-awesome-icon', FontAwesomeIcon)
-    .mount('#app');
+    .mount('#app')
 

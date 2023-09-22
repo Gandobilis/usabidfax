@@ -22,7 +22,11 @@ module.exports = {
                 '2xl': '5rem',
             },
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ['Exo_2', "sans-serif"]
+            },
+        },
     },
     plugins: [],
 }
