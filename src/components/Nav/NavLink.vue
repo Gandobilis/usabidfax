@@ -9,9 +9,7 @@ defineProps({
 
 <template>
   <!-- Nav Link -->
-  <router-link :to="link.path">
-    <li class="cursor-pointer border border-white px-5 py-4 font-bold">
-      <p v-text="link.title" class="text-white"/>
-    </li>
-  </router-link>
+  <li class="cursor-pointer border border-white px-5 py-4 font-bold hover:bg-gray-400">
+    <router-link :to="link.path" class="text-white" v-text="link.title"/>
+  </li>
 </template>

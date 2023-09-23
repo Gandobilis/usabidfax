@@ -1,15 +1,23 @@
 <script setup>
 import NavMenu from "@/components/Nav/NavMenu.vue";
 import Logo from "@/components/Nav/Logo.vue";
-import ResNav from "@/components/Nav/ResNav.vue";
+import ResNav from "@/components/Nav/ResNavMenu.vue";
+import {ref} from "vue";
+
+const open = ref(false);
+
+const toggle = () => open.value = !open.value;
 </script>
 
 <template>
-  <header class="bg-[#6A7189]">
+  <header class="bg-[#6A7189] max-lg:relative max-xl:">
     <div class="mx-auto flex max-w-7xl items-center justify-between py-3.5 lg:p-5 max-2xl:px-4">
       <logo/>
-      <nav-menu class="max-lg:hidden"/>
-      <res-nav class="lg:hidden"/>
+      <nav-menu/>
+      <font-awesome-icon :icon="['fas', open ? 'xmark' : 'bars']" class="cursor-pointer z-50 lg:hidden" size="xl"
+                         :style="{color: open ? '#000' : '#fff'}" @click="toggle"
+      />
     </div>
+    <res-nav :open="open"/>
   </header>
 </template>
