@@ -8,7 +8,7 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 
-import {faTelegram} from "@fortawesome/free-brands-svg-icons"
+import {faTelegram, faSearchengin} from "@fortawesome/free-brands-svg-icons"
 import {faBars, faXmark, faEnvelope, faCaretDown, faAngleRight, faAngleLeft} from "@fortawesome/free-solid-svg-icons"
 
 library.add(faBars, faXmark, faTelegram, faEnvelope, faCaretDown, faAngleRight, faAngleLeft)
