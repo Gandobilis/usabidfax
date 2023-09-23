@@ -12,10 +12,9 @@ const {navMenu} = useHeader()
 
 <template>
   <!-- Res Nav Menu -->
-  <div class="lg:hidden absolute flex items-center pt-2 gap-y-3 flex-col w-full h-[100vw] z-50"
-       :class="{'w-full h-full bg-white': open}">
-    <div v-if="open" v-for="(link, index) in navMenu" :key="index">
-      <router-link class="font-bold text-xl" :to="link.path" v-text="link.title"/>
-    </div>
-  </div>
+  <ul v-if="open" class="absolute z-10 flex w-full flex-col items-center gap-y-3 bg-white py-2 h-28 lg:hidden">
+    <li v-for="(link, index) in navMenu" :key="index">
+      <router-link class="text-xl font-bold" :to="link.path" v-text="link.title"/>
+    </li>
+  </ul>
 </template>

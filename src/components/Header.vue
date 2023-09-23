@@ -10,11 +10,11 @@ const toggle = () => open.value = !open.value;
 </script>
 
 <template>
-  <header class="bg-[#6A7189] max-lg:relative max-xl:">
-    <div class="mx-auto flex max-w-7xl items-center justify-between py-3.5 lg:p-5 max-2xl:px-4">
+  <header class="bg-[#6A7189] max-lg:relative">
+    <div class="mx-auto flex max-w-7xl items-center justify-between max-2xl:px-4 py-3.5 lg:p-5">
       <logo/>
       <nav-menu/>
-      <font-awesome-icon :icon="['fas', open ? 'xmark' : 'bars']" class="cursor-pointer z-50 lg:hidden" size="xl"
+      <font-awesome-icon :icon="['fas', open ? 'xmark' : 'bars']" class="cursor-pointer lg:hidden" size="xl"
                          :style="{color: open ? '#000' : '#fff'}" @click="toggle"
       />
     </div>
