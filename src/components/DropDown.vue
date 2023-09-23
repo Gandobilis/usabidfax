@@ -12,14 +12,15 @@ defineProps({
   }
 })
 
-const emit = defineEmits(['changeFloor'])
+// const emit = defineEmits(['changeFloor'])
 
 const showDropDown = ref(false)
 
 const toggleDropDown = () => showDropDown.value = !showDropDown.value
 
-const changeFloor = (floor) => {
-  emit('changeFloor', floor)
+const changeFloor = () => {
+  // options.length - floor
+  // emit('changeFloor', floor)
   toggleDropDown()
 }
 </script>
@@ -37,7 +38,7 @@ const changeFloor = (floor) => {
       <div class="flex max-h-60 flex-col gap-y-4 overflow-y-scroll scroll-container">
         <p class="cursor-pointer font-medium leading-6" v-for="floor in options.length"
            :key="options.length - floor + 1"
-           @click="changeFloor(options.length - floor)">
+           @click="changeFloor">
           {{ options[options.length - floor] }}
         </p>
       </div>

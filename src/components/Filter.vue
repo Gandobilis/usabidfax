@@ -18,11 +18,7 @@ onMounted(async () => {
 
 <template>
   <div class="mt-3 bg-white py-8 px-4 space-y-7" v-if="makes && models">
-    <DropDown class="md:w-1/2" :options="makes" :selected="makes[0]"/>
-    <DropDown class="md:w-1/2" :options="models" :selected="models[0]"/>
+    <DropDown class="md:w-1/2" :options="makes" selected="Select Make"/>
+    <DropDown class="md:w-1/2" :options="models" selected="Select Model"/>
   </div>
 </template>
-
-<style scoped>
-
-</style>

@@ -133,7 +133,7 @@
       </div>
     </template>
     <h1 v-else-if="isLoading">Loading...</h1>
-    <Error v-else :error="error"/>
+    <Error v-else/>
   </MainLayout>
 </template>
 
@@ -143,12 +143,12 @@ import MainLayout from "@/layouts/MainLayout.vue"
 import {Carousel, Slide, Navigation} from 'vue3-carousel'
 import {ref, onMounted} from "vue"
 import {useRoute} from "vue-router"
-import useCars from "@/composables/cars"
+import useCar from "@/composables/useCar"
 import Entry from "@/components/Entry.vue";
 import Error from "@/components/Error.vue";
 
 const route = useRoute()
-const {data, isLoading, error, fetchData} = useCars()
+const {data, isLoading, error, fetchData} = useCar()
 const currentSlide = ref(0)
 
 const slideTo = (val) => {
@@ -157,6 +157,7 @@ const slideTo = (val) => {
 
 onMounted(async () => {
   await fetchData(`https://usabidfax.netlify.app/.netlify/functions/get-element-by-id?id=${route.params.vin}`);
-  data.value = data.value.item
+  console.log(`https://usabidfax.netlify.app/.netlify/functions/get-element-by-id?id=${route.params.vin}`)
+  data.value = data.value.element
 })
 </script>
