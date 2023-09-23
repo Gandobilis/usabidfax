@@ -17,9 +17,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mt-3 bg-white py-8 pl-4 space-y-7" v-if="makes && models">
-    <DropDown class="w-1/2" :options="makes" :selected="makes[0]"/>
-    <DropDown class="w-1/2" :options="models" :selected="models[0]"/>
+  <div class="mt-3 bg-white py-8 px-4 space-y-7" v-if="makes && models">
+    <DropDown class="md:w-1/2" :options="makes" :selected="makes[0]"/>
+    <DropDown class="md:w-1/2" :options="models" :selected="models[0]"/>
   </div>
 </template>
 
