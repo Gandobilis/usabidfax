@@ -27,7 +27,7 @@ const cars = faker.helpers.multiple(generateCar, {
 
 const carsJSON = JSON.stringify({cars}, null, 2);
 
-fs.writeFile('../../db.json', carsJSON, 'utf8', (err) => {
+fs.writeFile('../../data.json', carsJSON, 'utf8', (err) => {
     if (err) {
         console.error('Error writing JSON to file:', err);
     } else {
