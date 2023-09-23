@@ -4,11 +4,10 @@ const fs = require('fs');
 function generateCar() {
     const images = [];
     for (let i = 2; i <= 8; i++)
-        images.push(`http://localhost:5173/src/assets/images/tesla-model-3-2020-5yj3e1ea2lf745165-img${i}.jpg`);
-
+        images.push(`src/assets/images/tesla-model-3-2020-5yj3e1ea2lf745165-img${i}.jpg`);
     return {
         id: faker.vehicle.vin(),
-        featured: 'http://localhost:5173/src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg',
+        featured: 'src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg',
         make: faker.vehicle.manufacturer(),
         model: faker.vehicle.model(),
         body_style: faker.vehicle.type(),

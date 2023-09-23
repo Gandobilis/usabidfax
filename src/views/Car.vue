@@ -41,12 +41,12 @@
                    :value="data.price"
             />
             <Entry
-                   _key="Auction"
-                   :value="data.auction"
+                _key="Auction"
+                :value="data.auction"
             />
             <Entry class=""
                    _key="Lot number"
-                   :value="data.lotNumber"
+                   :value="String(data.lotNumber)"
             />
             <Entry class=""
                    _key="Date of sale"
@@ -120,7 +120,8 @@
         </div>
       </div>
     </template>
-    <h1 v-else>Loading...</h1>
+    <h1 v-else-if="isLoading">Loading...</h1>
+    <Error :error="error"/>
   </MainLayout>
 </template>
 
@@ -132,9 +133,10 @@ import {ref, onMounted} from "vue"
 import {useRoute} from "vue-router"
 import useCars from "@/composables/cars"
 import Entry from "@/components/Entry.vue";
+import Error from "@/components/Error.vue";
 
 const route = useRoute()
-const {data, fetchData} = useCars()
+const {data, isLoading, error, fetchData} = useCars()
 const currentSlide = ref(0)
 
 const slideTo = (val) => {
@@ -143,5 +145,6 @@ const slideTo = (val) => {
 
 onMounted(async () => {
   await fetchData(`https://usabidfax.netlify.app/.netlify/functions/json-server?id=${route.params.vin}`);
+  data.value = data.value.item
 })
 </script>
