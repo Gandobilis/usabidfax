@@ -9,15 +9,29 @@ function generateCar() {
     return {
         price: faker.helpers.rangeToNumber({min: 5000, max: 80000}),
         title: faker.lorem.sentence(),
-        vin: faker.vehicle.vin(),
-        auction: faker.helpers.arrayElement(['IAAI', 'Copart', 'Manheim']),
         status: faker.helpers.arrayElement(['sold', 'available', 'pending']),
+        auction: faker.helpers.arrayElement(['IAAI', 'Copart', 'Manheim']),
         lotNumber: faker.helpers.rangeToNumber({min: 10000, max: 99999}),
-        condition: faker.helpers.arrayElement(['Run and Drive', 'Non-Runner', 'Salvage']),
-        damage: faker.helpers.arrayElement(['Front End', 'Rear End', 'Side Damage', 'No Damage']),
-        mileage: faker.helpers.rangeToNumber({min: 1000, max: 100000}) + ' mile (Actual)',
         dateOfSale: faker.date.past().toLocaleDateString('en-US'),
-        images: images
+        year: faker.date.past().getFullYear(),
+        vin: faker.vehicle.vin(),
+        condition: faker.helpers.arrayElement(['Stationary', 'Run and Drive', 'Non-Runner', 'Salvage']),
+        engine: faker.lorem.word().toUpperCase() + ' ' + faker.lorem.word().toUpperCase() + ' ' + faker.lorem.word().toUpperCase(),
+        mileage: faker.helpers.rangeToNumber({min: 1000, max: 100000}) + ' mile (Actual)',
+        seller: faker.company.name(),
+        documents: faker.lorem.word().toUpperCase() + ' (' + faker.location.state() + ')',
+        location: faker.location.state() + ' (' + faker.location.state({abbreviated: true}) + ')',
+        primaryDamage: faker.helpers.arrayElement(['Front End', 'Rear End', 'Side Damage', 'No Damage']),
+        secondaryDamage: 'Not specified',
+        estimatedRetailValue: faker.helpers.rangeToNumber({min: 10000, max: 50000}),
+        estimatedRepairCost: faker.helpers.rangeToNumber({min: 10000, max: 50000}),
+        transmission: faker.helpers.arrayElement(['Automatic', 'Manual', 'Unknown']),
+        bodyColor: faker.color.human(),
+        drive: faker.helpers.arrayElement(['Front Wheel Drive', 'Rear Wheel Drive', 'All Wheel Drive']),
+        fuel: faker.helpers.arrayElement(['Gasoline', 'Diesel', 'Electric']),
+        keys: faker.helpers.arrayElement(['Present', 'Not Present']),
+        notes: faker.lorem.sentence(),
+        images: images,
     };
 }
 
@@ -27,7 +41,7 @@ const cars = faker.helpers.multiple(generateCar, {
 
 const carsJSON = JSON.stringify({cars}, null, 2);
 
-fs.writeFile('../../data.json', carsJSON, 'utf8', (err) => {
+fs.writeFile('../../netlify/functions/data.json', carsJSON, 'utf8', (err) => {
     if (err) {
         console.error('Error writing JSON to file:', err);
     } else {
