@@ -156,7 +156,7 @@ const slideTo = (val) => {
 }
 
 onMounted(async () => {
-  await fetchData(`https://usabidfax.netlify.app/.netlify/functions/json-server?id=${route.params.vin}`);
+  await fetchData(`https://usabidfax.netlify.app/.netlify/functions/get-element-by-id/${route.params.vin}`);
   data.value = data.value.item
 })
 </script>

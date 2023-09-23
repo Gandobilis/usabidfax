@@ -2,14 +2,15 @@
 const data = require('./data.json'); // Import your JSON data
 
 exports.handler = async (event, context) => {
-    const {id} = event.pathParameters;
-
-    if (!id) {
+    // Check if event.pathParameters is defined and has an 'id'
+    if (!event.pathParameters || !event.pathParameters.id) {
         return {
             statusCode: 400,
-            body: JSON.stringify({message: 'Missing "id" parameter'}),
+            body: JSON.stringify({message: 'Missing or invalid "id" parameter'}),
         };
     }
+
+    const {id} = event.pathParameters;
 
     // Find the element by ID
     const element = data.cars.find(item => item.id === id);
