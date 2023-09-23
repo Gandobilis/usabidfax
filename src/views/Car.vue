@@ -1,27 +1,41 @@
-<script setup>
-import {onMounted} from 'vue'
-import useCars from "@/composables/cars";
-import {useRoute} from "vue-router";
-
-const route = useRoute();
-const {data, fetchData} = useCars();
-
-onMounted(() => {
-  fetchData(`http://localhost:3000/cars?vin=${route.params.vin}`)
-})
-</script>
-
-
 <template>
-  <div
-      v-if="data"
-      class="fotorama"
-      data-width="731"
-      data-ratio="731/548"
-      data-max-width="100%"
-      data-nav="thumbs"
-  >
-    <img v-for="(image, index) in data[0].images" :key="index" :src="image" :alt="data[0].vin"/>
-  </div>
-  <h1 v-else>Loading...</h1>
+  <MainLayout>
+    <div class="w-1/2">
+      <Carousel id="gallery" :autoplay="3000" :items-to-show="1" :wrap-around="true" v-model="currentSlide">
+        <Slide v-for="slide in 10" :key="slide" class="">
+          <div class="carousel__item">
+            <img src="src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg"/>
+          </div>
+        </Slide>
+      </Carousel>
+
+      <Carousel
+          id="thumbnails"
+          :items-to-show="4"
+          :wrap-around="true"
+          v-model="currentSlide"
+          ref="carousel"
+      >
+        <Slide v-for="slide in 10" :key="slide">
+          <div class="carousel__item" @click="slideTo(slide - 1)">
+            <img src="src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg"/>
+          </div>
+        </Slide>
+      </Carousel>
+    </div>
+  </MainLayout>
 </template>
+
+<script setup>
+import {Carousel, Slide} from 'vue3-carousel'
+
+import 'vue3-carousel/dist/carousel.css'
+import MainLayout from "@/layouts/MainLayout.vue";
+import {ref} from "vue";
+
+const currentSlide = ref(0);
+
+const slideTo = (val) => {
+  this.currentSlide.value = val
+}
+</script>
