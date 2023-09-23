@@ -142,6 +142,6 @@ const slideTo = (val) => {
 }
 
 onMounted(() => {
-  fetchData(`http://localhost:3000/cars/${route.params.vin}`);
+  fetchData(`https://usabidfax.netlify.app/.netlify/functions/json-server/${route.params.vin}`);
 })
 </script>

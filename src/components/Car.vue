@@ -18,7 +18,7 @@ const props = defineProps({
       </div>
       <div>
         <p class="font-bold">
-          {{ car.title + car.vin }}
+          {{ car.make + ' ' + car.model + '' + ' ' + car.id }}
         </p>
       </div>
     </router-link>
