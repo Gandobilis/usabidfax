@@ -6,8 +6,9 @@ import Error from "@/components/Error.vue";
 
 const {data, error, isLoading, fetchData} = useCars();
 
-onMounted(() => {
-  fetchData('https://usabidfax.netlify.app/.netlify/functions/json-server?_page=1&_limit=10');
+onMounted(async () => {
+  await fetchData('https://usabidfax.netlify.app/.netlify/functions/json-server?_page=1&_limit=9');
+  data.value = data.value.items;
 })
 </script>
 

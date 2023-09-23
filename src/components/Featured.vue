@@ -1,7 +1,7 @@
 <template>
   <section class="max-sm:px-5 bg-section">
     <carousel :autoplay="2000" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
-      <slide v-for="(car, index) in cars" :key="index">
+      <slide v-for="(car, index) in data" :key="index">
         <Car class="mx-1" :car="car" />
       </slide>
       <template #addons>
@@ -22,20 +22,16 @@
 import 'vue3-carousel/dist/carousel.css';
 import {Carousel, Navigation, Slide} from "vue3-carousel";
 import Car from "@/components/Car.vue";
+import useCars from "@/composables/cars";
+import {onMounted} from "vue";
+import Error from "@/components/Error.vue";
 
-const cars = Array(9).fill({
-  price: '12700',
-  title: 'Tesla Model 3 Range 2019 Blue MOTOR vin:',
-  vin: '5YJ3E1EA9KF400861',
-  auction: 'IAAI',
-  status: 'sold',
-  lotNumber: '37543426',
-  condition: 'Run and Drive',
-  Damage: 'Front End',
-  mileage: '48071 mile (Actual)',
-  dateOfSale: '20.09.2023',
-  images: Array(7).fill('http://localhost:5173/src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg')
-});
+const {data, error, isLoading, fetchData} = useCars();
+
+onMounted(async () => {
+  await fetchData('https://usabidfax.netlify.app/.netlify/functions/json-server?_page=1&_limit=9');
+  data.value = data.value.items;
+})
 // carousel settings
 const settings = {
   itemsToShow: 1,
