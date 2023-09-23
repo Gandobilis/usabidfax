@@ -14,6 +14,9 @@
                   />
                 </div>
               </Slide>
+              <template #addons>
+                <Navigation/>
+              </template>
             </Carousel>
 
             <Carousel
@@ -34,9 +37,6 @@
                   />
                 </div>
               </Slide>
-              <template #addons>
-                <Navigation />
-              </template>
             </Carousel>
           </div>
           <div class="flex flex-col lg:w-1/2 divide-y divide-gray-400">
@@ -152,11 +152,3 @@ onMounted(async () => {
   data.value = data.value.item
 })
 </script>
-
-<style scoped>
-.carousel__prev,
-.carousel__next {
-  box-sizing: content-box;
-  border: 5px solid white;
-}
-</style>
