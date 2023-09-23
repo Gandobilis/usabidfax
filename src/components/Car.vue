@@ -3,6 +3,10 @@ const props = defineProps({
   car: {
     type: Object,
     required: true
+  },
+  price: {
+    type: Boolean,
+    default: true
   }
 });
 </script>
@@ -12,7 +16,7 @@ const props = defineProps({
     <router-link :to="'/' + car.id">
       <div class="relative">
         <img :src="car.featured" :alt="car.id">
-        <span
+        <span v-if="price"
             style="clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);"
             class="bg-[#4ADD31] absolute font-bold text-white pl-4 pr-8 py-2.5 bottom-[10%]">${{ car.price }}</span>
       </div>

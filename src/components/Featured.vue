@@ -2,7 +2,7 @@
   <section class="max-sm:px-5 bg-section">
     <carousel :autoplay="2000" v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
       <slide v-for="(car, index) in data" :key="index">
-        <Car class="mx-1" :car="car" />
+        <Car :price="false" class="mx-1" :car="car" />
       </slide>
       <template #addons>
         <navigation>

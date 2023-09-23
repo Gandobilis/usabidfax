@@ -3,44 +3,10 @@ const data = require('./data.json'); // Import your JSON data
 
 exports.handler = async (event, context) => {
     const queryParams = event.queryStringParameters || {};
-    const {id, make, model, _page, _limit, _sort, _order} = queryParams;
+    const {_page, _limit} = queryParams;
 
     // Apply filters
     let filteredItems = data.cars
-
-    if (id) {
-        const item = filteredItems.find(item => item.id === id);
-        if (item) {
-            // If an ID is provided and found, return that specific item
-            return {
-                statusCode: 200,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({item}),
-            };
-        } else {
-            // If the ID is not found, return a 404 response
-            return {
-                statusCode: 404,
-                body: JSON.stringify({message: 'Item not found'}),
-            };
-        }
-    }
-
-    // if (make) {
-    //     filteredItems = filteredItems.filter(item => item.make === make);
-    // }
-
-    if (model) {
-        filteredItems = filteredItems.filter(item => item.model === model);
-    }
-
-    // Apply sorting
-    if (_sort) {
-        const order = _order === 'desc' ? -1 : 1;
-        filteredItems.sort((a, b) => (a[_sort] > b[_sort] ? order : -order));
-    }
 
     // Apply pagination
     if (_page && _limit) {

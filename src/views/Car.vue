@@ -39,6 +39,7 @@
                      @click="slideTo(index - 1)">
                 <div class="carousel__item">
                   <img
+                      class="mx-1"
                       :src="image"
                       :alt="data.id"
                   />
