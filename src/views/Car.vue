@@ -151,7 +151,7 @@ const {data, isLoading, error, fetchData} = useCars()
 const currentSlide = ref(0)
 
 const slideTo = (val) => {
-  this.currentSlide.value = val
+  currentSlide.value = val
 }
 
 onMounted(async () => {
