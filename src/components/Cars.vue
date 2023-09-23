@@ -7,7 +7,7 @@ import Error from "@/components/Error.vue";
 const {data, error, isLoading, fetchData} = useCars();
 
 onMounted(() => {
-  fetchData('https://usabidfax.netlify.app/.netlify/functions/json-server');
+  fetchData('https://usabidfax.netlify.app/.netlify/functions/json-server?_page=1&_limit=10');
 })
 </script>
 

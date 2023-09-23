@@ -3,13 +3,29 @@ const data = require('./data.json'); // Import your JSON data
 
 exports.handler = async (event, context) => {
     const queryParams = event.queryStringParameters || {};
-    const {vin, make, model, _page, _limit, _sort, _order} = queryParams;
+    const {id, make, model, _page, _limit, _sort, _order} = queryParams;
 
     // Apply filters
     let filteredItems = data.cars
 
-    if (vin) {
-        filteredItems = filteredItems.filter(item => item.vin === vin);
+    if (id) {
+        const item = filteredItems.find(item => item.id === id);
+        if (item) {
+            // If an ID is provided and found, return that specific item
+            return {
+                statusCode: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({item}),
+            };
+        } else {
+            // If the ID is not found, return a 404 response
+            return {
+                statusCode: 404,
+                body: JSON.stringify({message: 'Item not found'}),
+            };
+        }
     }
 
     // if (make) {
@@ -33,11 +49,15 @@ exports.handler = async (event, context) => {
         filteredItems = filteredItems.slice(startIndex, endIndex);
     }
 
+    const headers = {
+        'Access-Control-Allow-Origin': 'http://localhost:5173', // Replace with your local host URL
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+    };
+
     return {
         statusCode: 200,
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        headers,
         body: JSON.stringify({items: filteredItems}),
     };
 };
