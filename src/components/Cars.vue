@@ -1,25 +1,20 @@
 <script setup>
 import Car from "@/components/Car.vue";
+import useCars from "@/composables/cars";
+import {onMounted} from "vue";
 
-const cars = Array(9).fill({
-  price: '12700',
-  title: 'Tesla Model 3 Range 2019 Blue MOTOR vin:',
-  vin: '5YJ3E1EA9KF400861',
-  auction: 'IAAI',
-  status: 'sold',
-  lotNumber: '37543426',
-  condition: 'Run and Drive',
-  Damage: 'Front End',
-  mileage: '48071 mile (Actual)',
-  dateOfSale: '20.09.2023',
-  images: Array(7).fill('https://bidfax.info/uploads/posts/2023-09/22/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg')
-});
+const {data, error, isLoading, fetchData} = useCars();
+
+onMounted(() => {
+  fetchData('http://localhost:3000/cars?_page=7&_limit=20');
+})
 </script>
 
 <template>
-  <div class="mt-3 grid grid-cols-3 gap-x-7 gap-y-5">
-    <Car v-for="(car, index) in cars" :car="car" :key="index"/>
+  <div v-if="data" class="grid grid-cols-1 sm:max-lg:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-4">
+    <Car v-for="(car, index) in data" :car="car" :key="index"/>
   </div>
+  <h1 v-else>Loading...</h1>
 </template>
 
 <style scoped>

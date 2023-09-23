@@ -9,7 +9,7 @@ const routes = [
          This route should be constructed dynamically.
          Every slug in url must be part of a some filer.
         */
-        path: '/:id',
+        path: '/:vin',
         component: () => import('../views/Car.vue')
     },
     {
