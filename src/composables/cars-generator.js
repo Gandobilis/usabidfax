@@ -3,10 +3,15 @@ const fs = require('fs');
 
 function generateCar() {
     const images = [];
-    for (let i = 0; i < 7; i++)
-        images.push('https://cdn.glitch.global/62237847-832c-4ecf-85c6-71ba709033fc/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg?v=1695465741238');
+    for (let i = 2; i <= 8; i++)
+        images.push(`http://localhost:5173/src/assets/images/tesla-model-3-2020-5yj3e1ea2lf745165-img${i}.jpg`);
 
     return {
+        id: faker.vehicle.vin(),
+        featured: 'http://localhost:5173/src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg',
+        make: faker.vehicle.manufacturer(),
+        model: faker.vehicle.model(),
+        body_style: faker.vehicle.type(),
         price: faker.helpers.rangeToNumber({min: 5000, max: 80000}),
         title: faker.lorem.sentence(),
         status: faker.helpers.arrayElement(['sold', 'available', 'pending']),
@@ -14,7 +19,6 @@ function generateCar() {
         lotNumber: faker.helpers.rangeToNumber({min: 10000, max: 99999}),
         dateOfSale: faker.date.past().toLocaleDateString('en-US'),
         year: faker.date.past().getFullYear(),
-        vin: faker.vehicle.vin(),
         condition: faker.helpers.arrayElement(['Stationary', 'Run and Drive', 'Non-Runner', 'Salvage']),
         engine: faker.lorem.word().toUpperCase() + ' ' + faker.lorem.word().toUpperCase() + ' ' + faker.lorem.word().toUpperCase(),
         mileage: faker.helpers.rangeToNumber({min: 1000, max: 100000}) + ' mile (Actual)',
@@ -26,9 +30,9 @@ function generateCar() {
         estimatedRetailValue: faker.helpers.rangeToNumber({min: 10000, max: 50000}),
         estimatedRepairCost: faker.helpers.rangeToNumber({min: 10000, max: 50000}),
         transmission: faker.helpers.arrayElement(['Automatic', 'Manual', 'Unknown']),
-        bodyColor: faker.color.human(),
+        color: faker.vehicle.color(),
         drive: faker.helpers.arrayElement(['Front Wheel Drive', 'Rear Wheel Drive', 'All Wheel Drive']),
-        fuel: faker.helpers.arrayElement(['Gasoline', 'Diesel', 'Electric']),
+        fuel: faker.vehicle.fuel(),
         keys: faker.helpers.arrayElement(['Present', 'Not Present']),
         notes: faker.lorem.sentence(),
         images: images,

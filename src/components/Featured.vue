@@ -34,7 +34,7 @@ const cars = Array(9).fill({
   Damage: 'Front End',
   mileage: '48071 mile (Actual)',
   dateOfSale: '20.09.2023',
-  images: Array(7).fill('https://bidfax.info/uploads/posts/2023-09/22/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg')
+  images: Array(7).fill('https://cdn.glitch.global/62237847-832c-4ecf-85c6-71ba709033fc/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg?v=1695465741238')
 });
 // carousel settings
 const settings = {

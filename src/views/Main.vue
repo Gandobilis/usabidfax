@@ -28,7 +28,7 @@ import Panel from "@/components/Panel.vue";
 <!--        <DropDown class="w-1/2" :options="makes" :selected="makes[0]"/>-->
 <!--        <DropDown class="w-1/2" :options="models[0]" :selected="models[0][0]"/>-->
       </div>
-    <Featured />
+<!--    <Featured />-->
     <Cars />
     <Panel />
     </div>
