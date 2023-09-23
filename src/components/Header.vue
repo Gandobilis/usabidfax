@@ -1,12 +1,12 @@
 <script setup>
-import NavMenu from "@/components/Nav/NavMenu.vue";
-import Logo from "@/components/Nav/Logo.vue";
-import ResNav from "@/components/Nav/ResNavMenu.vue";
-import {ref} from "vue";
+import NavMenu from "@/components/Nav/NavMenu.vue"
+import Logo from "@/components/Nav/Logo.vue"
+import ResNav from "@/components/Nav/ResNavMenu.vue"
+import {ref} from "vue"
 
-const open = ref(false);
+const open = ref(false)
 
-const toggle = () => open.value = !open.value;
+const toggle = () => open.value = !open.value
 </script>
 
 <template>

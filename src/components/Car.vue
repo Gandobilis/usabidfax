@@ -9,16 +9,16 @@ const props = defineProps({
 
 <template>
   <div class="border p-1.5 bg-[#F8F9FA] divide-y">
-    <router-link :to="'/' + car.vin">
+    <router-link :to="'/' + car.id">
       <div class="relative">
-        <img :src="car.images[0]" alt="car">
+        <img :src="car.featured" alt="car">
         <span
             style="clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);"
             class="bg-[#4ADD31] absolute font-bold text-white pl-4 pr-8 py-2.5 bottom-[10%]">${{ car.price }}</span>
       </div>
       <div>
         <p class="font-bold">
-          {{ car.title + car.vin }}
+          {{ car.make + ' ' + car.model + '' + ' ' + car.id }}
         </p>
       </div>
     </router-link>
