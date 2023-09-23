@@ -49,29 +49,3 @@ const breakpoints = {
   },
 };
 </script>
-
-<style>
-/* changing default prev and next buttons styling */
-.carousel__prev,
-.carousel__next {
-  background-color: #25344F !important;
-  padding: 1.5rem !important;
-  font-size: medium !important;
-  border-radius: 50% !important;
-}
-
-.carousel__prev:hover,
-.carousel__next:hover {
-  background-color: black !important;
-}
-
-@media (min-width: 1024px) {
-  .carousel__prev {
-    margin-left: 2.25rem !important;
-  }
-
-  .carousel__next {
-    margin-right: 2.25rem !important;
-  }
-}
-</style>

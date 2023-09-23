@@ -15,7 +15,14 @@
                 </div>
               </Slide>
               <template #addons>
-                <Navigation/>
+                <navigation>
+                  <template #next>
+                    <font-awesome-icon :icon="['fas', 'angle-right']" style="color: #FFF;"/>
+                  </template>
+                  <template #prev>
+                    <font-awesome-icon :icon="['fas', 'angle-left']" style="color: #FFF;"/>
+                  </template>
+                </navigation>
               </template>
             </Carousel>
 
