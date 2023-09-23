@@ -4,7 +4,7 @@ const fs = require('fs');
 function generateCar() {
     const images = [];
     for (let i = 0; i < 7; i++)
-        images.push('http://localhost:5173/src/assets/images/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg');
+        images.push('https://cdn.glitch.global/62237847-832c-4ecf-85c6-71ba709033fc/tesla-model-3-2019-5yj3e1ea9kf400861-img1.jpg?v=1695465741238');
 
     return {
         price: faker.helpers.rangeToNumber({min: 5000, max: 80000}),
