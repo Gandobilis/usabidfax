@@ -6,7 +6,7 @@ import {onMounted} from "vue";
 const {data, error, isLoading, fetchData} = useCars();
 
 onMounted(() => {
-  fetchData('https://smart-nebulous-balloon.glitch.me/cars?_page=7&_limit=20');
+  fetchData('https://api.jsonbin.io/v3/b/650ec90354105e766fb8966d?_page=7&_limit=20');
 })
 </script>
 

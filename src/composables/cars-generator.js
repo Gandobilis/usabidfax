@@ -22,7 +22,7 @@ function generateCar() {
 }
 
 const cars = faker.helpers.multiple(generateCar, {
-    count: 20_000
+    count: 33
 });
 
 const carsJSON = JSON.stringify({cars}, null, 2);
