@@ -3,18 +3,18 @@ const data = require('./data.json'); // Import your JSON data
 
 exports.handler = async (event, context) => {
     const queryParams = event.queryStringParameters || {};
-    const { vin, make, model, _page, _limit, _sort, _order } = queryParams;
+    const {vin, make, model, _page, _limit, _sort, _order} = queryParams;
 
     // Apply filters
-    let filteredItems = [...data.items];
+    let filteredItems = data.cars
 
     if (vin) {
         filteredItems = filteredItems.filter(item => item.vin === vin);
     }
 
-    if (make) {
-        filteredItems = filteredItems.filter(item => item.make === make);
-    }
+    // if (make) {
+    //     filteredItems = filteredItems.filter(item => item.make === make);
+    // }
 
     if (model) {
         filteredItems = filteredItems.filter(item => item.model === model);
@@ -38,6 +38,6 @@ exports.handler = async (event, context) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ items: filteredItems }),
+        body: JSON.stringify({items: filteredItems}),
     };
 };
