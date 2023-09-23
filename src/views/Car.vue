@@ -22,17 +22,21 @@
                 :wrap-around="true"
                 v-model="currentSlide"
                 ref="carousel"
+                class="space-x-7"
             >
               <Slide class="hover:cursor-pointer" v-for="(image, index) in [data.featured].concat(data.images)"
                      :key="index"
                      @click="slideTo(index - 1)">
-                <div class="carousel__item !space-x-3">
+                <div class="carousel__item">
                   <img
                       :src="image"
                       :alt="data.id"
                   />
                 </div>
               </Slide>
+              <template #addons>
+                <Navigation />
+              </template>
             </Carousel>
           </div>
           <div class="flex flex-col lg:w-1/2 divide-y divide-gray-400">
@@ -121,14 +125,14 @@
       </div>
     </template>
     <h1 v-else-if="isLoading">Loading...</h1>
-    <Error :error="error"/>
+    <Error v-else :error="error"/>
   </MainLayout>
 </template>
 
 <script setup>
 import 'vue3-carousel/dist/carousel.css'
 import MainLayout from "@/layouts/MainLayout.vue"
-import {Carousel, Slide} from 'vue3-carousel'
+import {Carousel, Slide, Navigation} from 'vue3-carousel'
 import {ref, onMounted} from "vue"
 import {useRoute} from "vue-router"
 import useCars from "@/composables/cars"
@@ -148,3 +152,11 @@ onMounted(async () => {
   data.value = data.value.item
 })
 </script>
+
+<style scoped>
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+  border: 5px solid white;
+}
+</style>

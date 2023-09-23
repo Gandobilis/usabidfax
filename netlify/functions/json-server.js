@@ -50,9 +50,9 @@ exports.handler = async (event, context) => {
     }
 
     const headers = {
-        'Access-Control-Allow-Origin': 'http://localhost:5173', // Replace with your local host URL
+        'Access-Control-Allow-Origin': '*', // Replace with your local host URL
         'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Allow-Methods': 'GET',
     };
 
     return {
