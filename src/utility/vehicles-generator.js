@@ -20,7 +20,7 @@ function generateVehicle() {
         color: faker.vehicle.color(),
         cylinders: cylinders(),
         doc_type: null,
-        location: `${faker.location.state()} (${faker.location.state({abbreviated: true})}`,
+        location: `${faker.location.state()} (${faker.location.state({abbreviated: true})})`,
         drive: faker.helpers.arrayElement(['Front Wheel Drive', 'Rear Wheel Drive', 'All Wheel Drive', '4 Wheel Drive', null]),
         engine_type: `${faker.number.float({min: 2, max: 6, precision: 0.1})}L ${cylinders()}`,
         est_retail_value: faker.helpers.rangeToNumber({min: 500, max: 100_000}),

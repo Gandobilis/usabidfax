@@ -6,7 +6,7 @@
         <div class="flex  max-lg:flex-col gap-5 border-2 p-3">
           <div class="lg:w-1/2 space-y-3">
             <Carousel id="gallery" :autoplay="2500" :items-to-show="1" :wrap-around="true" v-model="currentSlide">
-              <Slide v-for="(image, index) in [data.featured].concat(data.images)" :key="index">
+              <Slide v-for="(image, index) in data.car_photos" :key="index">
                 <div class="carousel__item">
                   <img
                       :src="image"
@@ -34,7 +34,7 @@
                 ref="carousel"
                 class="space-x-7"
             >
-              <Slide class="hover:cursor-pointer" v-for="(image, index) in [data.featured].concat(data.images)"
+              <Slide class="hover:cursor-pointer" v-for="(image, index) in data.car_photos"
                      :key="index"
                      @click="slideTo(index - 1)">
                 <div class="carousel__item">
@@ -50,19 +50,29 @@
           <div class="flex flex-col lg:w-1/2 divide-y divide-gray-400">
             <Entry class="[&_*]:text-green-500 text-3xl font-bold"
                    _key="Final Bid"
-                   :value="data.price"
+                   :value="'$'+data.purchase_price"
             />
-            <Entry
-                _key="Auction"
-                :value="data.auction"
-            />
+            <div class="ml-3 gap-x-1.5 flex items-center">
+              <p>Auction: </p>
+              <img
+                  :src="
+              data.auction_name === 'Copart' ? '/auction/copart.svg' : '/auction/iaai.png'
+              "
+                  :class="data.auction_name === 'Copart' ? 'w-[50px] h-[19px]' : 'w-[33.5px] h-5'"
+                  :alt="data.auction_name"/>
+              <img
+                  :src="
+              data.sale_status === 'sold' ? '/status/sold.png' :  data.sale_status === 'on approval' ? '/status/onapproval.png' : '/status/timed.png'
+              "
+                  :alt="data.sale_status"/>
+            </div>
             <Entry class=""
                    _key="Lot number"
-                   :value="String(data.lotNumber)"
+                   :value="String(data.lot_number)"
             />
             <Entry class=""
                    _key="Date of sale"
-                   :value="data.dateOfSale"
+                   :value="data.date_of_sale"
             />
             <Entry class=""
                    _key="Year"
@@ -70,11 +80,11 @@
             />
             <Entry class=""
                    _key="Condition"
-                   :value="data.condition"
+                   :value="data.condition ?? undefined"
             />
             <Entry class=""
                    _key="Engine"
-                   :value="data.engine"
+                   :value="data.engine_type"
             />
             <Entry class="bg-blue-500 [&_*]:text-white"
                    _key="Seller"
@@ -82,7 +92,7 @@
             />
             <Entry class=""
                    _key="Documents"
-                   :value="data.documents"
+                   :value="data.doc_type ?? undefined"
             />
             <Entry class=""
                    _key="Location:"
@@ -90,23 +100,23 @@
             />
             <Entry class=""
                    _key="Primary Damage"
-                   :value="data.primaryDamage"
+                   :value="data.primary_damage"
             />
             <Entry class=""
                    _key="Secondary Damage"
-                   :value="data.secondaryDamage"
+                   :value="data.secondary_damage ?? undefined"
             />
             <Entry class=""
                    _key="Estimated Retail Value"
-                   :value="String(data.estimatedRetailValue)"
+                   :value="String(data.est_retail_value ?? undefined)"
             />
             <Entry class=""
                    _key="Estimated Repair Cost"
-                   :value="String(data.estimatedRepairCost)"
+                   :value="String(data.est_repair_value ?? undefined)"
             />
             <Entry class=""
                    _key="Transmission"
-                   :value="data.transmission"
+                   :value="data.transmission ?? undefined"
             />
             <Entry class=""
                    _key="Body color"
@@ -122,11 +132,11 @@
             />
             <Entry class=""
                    _key="Keys"
-                   :value="data.keys"
+                   :value="data.car_keys"
             />
             <Entry class=""
                    _key="Notes"
-                   :value="data.notes"
+                   :value="data.notes ?? undefined"
             />
           </div>
         </div>
@@ -157,5 +167,6 @@ const slideTo = (val) => {
 
 onMounted(async () => {
   await fetchData(`https://usabidfax.com/.netlify/functions/vehicle?vin=${route.params.vin}`);
+  console.log(data)
 })
 </script>

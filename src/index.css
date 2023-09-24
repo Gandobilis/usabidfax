@@ -7,7 +7,7 @@
 .carousel__prev,
 .carousel__next {
     background-color: #25344F !important;
-    padding: 1.5rem !important;
+    padding: 1.3rem !important;
     font-size: medium !important;
     border-radius: 50% !important;
 }
@@ -24,6 +24,13 @@
 
     .carousel__next {
         margin-right: 2.25rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .carousel__prev,
+    .carousel__next {
+       display: none !important;
     }
 }
 

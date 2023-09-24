@@ -8,7 +8,6 @@ const {data, error, isLoading, fetchData} = useCars();
 
 onMounted(async () => {
   await fetchData(`https://usabidfax.netlify.app/.netlify/functions/vehicles?page=1&limit=9`);
-  console.log(data.value)
 })
 
 // import the package
