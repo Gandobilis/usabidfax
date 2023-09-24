@@ -3799,6 +3799,37 @@
       "sale_status": "sold",
       "date_of_sale": "5.9.2023",
       "purchase_price": 37949
+    },
+    {
+      "id": 5604,
+      "auction_name": "",
+      "body_style": "",
+      "car_keys": "",
+      "color": "",
+      "cylinders": null,
+      "doc_type": null,
+      "location": "",
+      "drive": null,
+      "engine_type": "",
+      "est_retail_value": null,
+      "est_repair_value": null,
+      "fuel": "",
+      "lot_number": null,
+      "make": "",
+      "model": "",
+      "odometer": "",
+      "seller": "",
+      "condition": null,
+      "primary_damage": "",
+      "secondary_damage": null,
+      "transmission": "",
+      "vin": "",
+      "year": null,
+      "notes": "",
+      "car_photos": [],
+      "sale_status": "",
+      "date_of_sale": "",
+      "purchase_price": null
     }
   ]
 }

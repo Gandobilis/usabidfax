@@ -29,9 +29,10 @@ const deleteCar = async (vin) => {
 <template>
   <div>
     <h2 class="text-xl font-semibold">Car List</h2>
+    <router-link to="/admin/add-car" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-600">Add</router-link>
     <ul>
       <li v-for="car in cars.data" :key="car.id" class="border border-gray-300 mb-4 flex items-center p-4">
-        <img :src="car.car_photos[0]" alt="Car Photo" class="max-w-xs mr-4" />
+        <img :src="car.car_photos[0] ?? 1" alt="Car Photo" class="max-w-xs mr-4" />
         <div class="flex-grow">
           <p class="text-lg font-semibold">{{ car.make }} {{ car.model }}</p>
           <p class="text-gray-600">{{ car.vin }}</p>

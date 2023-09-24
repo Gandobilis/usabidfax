@@ -56,7 +56,6 @@ const adminApiKey = process.env.VITE_ADMIN_API_KEY; // process.env.NETLIFY_API_K
 // Middleware to check API key
 const checkApiKey = (req, res, next) => {
     const apiKey = req.headers['x-api-key'];
-    console.log(apiKey, adminApiKey)
     if (apiKey !== adminApiKey) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
@@ -91,10 +90,12 @@ router.post('/create', async (req, res) => {
     }
 
     try {
-        const newCar = req.body;
+        let newCar = req.body;
         const rawData = await fs.readFile(dataPath, 'utf-8');
         const data = JSON.parse(rawData);
 
+        newCar = JSON.parse(newCar);
+        newCar.id = 5604;
         data.vehicles.push(newCar);
         await fs.writeFile(dataPath, JSON.stringify(data, null, 2), 'utf-8');
 
