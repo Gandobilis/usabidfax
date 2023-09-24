@@ -1,5 +1,5 @@
 <script setup>
-import useHeader from "@/composables/header"
+import useHeader from "@/composables/useHeader"
 
 const {navMenu} = useHeader()
 </script>

@@ -11,7 +11,7 @@ const toggle = () => open.value = !open.value
 
 <template>
   <header class="bg-[#6A7189] max-lg:relative">
-    <div class="mx-auto flex max-w-7xl items-center justify-between max-2xl:px-4 py-3.5 lg:p-5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between ">
       <logo/>
       <nav-menu/>
       <font-awesome-icon :icon="['fas', open ? 'xmark' : 'bars']" class="cursor-pointer lg:hidden" size="xl"

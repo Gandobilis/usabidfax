@@ -18,6 +18,6 @@ defineProps({
         :class="{
       'px-1 !text-white bg-red-700':  _key === 'Auction'
        }"
-        v-text="value"/> <img v-if="_key === 'Auction'" src="/images/onapproval2.png" alt="approval"/></p>
+        v-text="value"/> <img v-if="_key === 'Auction'" src="/status/onapproval.png" alt="approval"/></p>
   </div>
 </template>

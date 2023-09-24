@@ -1,6 +1,6 @@
 <script setup>
 import Car from "@/components/Car.vue";
-import useCars from "@/composables/cars";
+import useCars from "@/composables/useCars";
 import {onMounted} from "vue";
 import Error from "@/components/Error.vue";
 
