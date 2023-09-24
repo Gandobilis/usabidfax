@@ -15,6 +15,10 @@ const routes = [
     {
         path: '/contact',
         component: () => import('../views/Contact.vue')
+    },
+    {
+        path: '/admin/car-list',
+        component: () => import('../views/CarList.vue')
     }
 ]
 
