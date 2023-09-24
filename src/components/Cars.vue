@@ -7,8 +7,7 @@ import Error from "@/components/Error.vue";
 const {data, error, isLoading, fetchData} = useCars();
 
 onMounted(async () => {
-  await fetchData(`https://usabidfax.netlify.app/.netlify/functions/json-server?_page=1&_limit=9`);
-  data.value = data.value.items;
+  await fetchData(`https://usabidfax.netlify.app/.netlify/functions/vehicles?page=1&limit=9`);
 })
 
 // import the package
@@ -17,8 +16,7 @@ import {VueAwesomePaginate} from "vue-awesome-paginate";
 import {ref} from "vue";
 
 const onClickHandler = async (page) => {
-  await fetchData(`https://usabidfax.netlify.app/.netlify/functions/json-server?_page=${page}&_limit=9`);
-  data.value = data.value.items;
+  await fetchData(`https://usabidfax.netlify.app/.netlify/functions/vehicles?page=${page}&limit=9`);
 };
 
 const currentPage = ref(1);

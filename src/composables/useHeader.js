@@ -1,5 +1,3 @@
-import logo from "../../public/logos/logo.png"
-
 export default function useHeader() {
     /*
      Name attributes could be added
@@ -21,7 +19,6 @@ export default function useHeader() {
     ]
 
     return {
-        logo,
         navMenu
     }
 }

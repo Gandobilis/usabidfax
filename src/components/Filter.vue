@@ -2,6 +2,7 @@
 import DropDown from "@/components/DropDown.vue";
 import {onMounted, ref} from "vue";
 import axios from "axios";
+import {faker} from '@faker-js/faker'
 
 const makes = ref([]);
 const make = ref('Make');
@@ -9,10 +10,10 @@ const models = ref([]);
 const model = ref('Model');
 
 onMounted(async () => {
-  const response = await axios.get('https://usabidfax.com/.netlify/functions/get-makes');
-  const response1 = await axios.get(`https://usabidfax.com/.netlify/functions/get-make?make=Audi`);
-  makes.value = response.data.makes;
-  models.value = response1.data.models;
+  const response = await axios.get('https://usabidfax.com/.netlify/functions/makes');
+  makes.value = response.data;
+  const response1 = await axios.get(`https://usabidfax.com/.netlify/functions/models?make=${faker.helpers.arrayElement(makes.value)}`);
+  models.value = response1.data;
 })
 </script>
 

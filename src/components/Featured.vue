@@ -24,13 +24,11 @@ import {Carousel, Navigation, Slide} from "vue3-carousel";
 import Car from "@/components/Car.vue";
 import useCars from "@/composables/useCars";
 import {onMounted} from "vue";
-import Error from "@/components/Error.vue";
 
 const {data, error, isLoading, fetchData} = useCars();
 
 onMounted(async () => {
-  await fetchData('https://usabidfax.netlify.app/.netlify/functions/json-server?_page=1&_limit=9');
-  data.value = data.value.items;
+  await fetchData('https://usabidfax.netlify.app/.netlify/functions/vehicles?page=1&limit=9');
 })
 // carousel settings
 const settings = {
