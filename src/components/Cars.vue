@@ -38,7 +38,5 @@ const currentPage = ref(1);
     />
   </div>
   <h1 v-else-if="isLoading">Loading...</h1>
-  <h1 v-else class="text-red-500">
-    <Error :error="error"/>
-  </h1>
+  <Error v-else/>
 </template>

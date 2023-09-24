@@ -1,5 +1,4 @@
 const {faker} = require('@faker-js/faker')
-const {v4: uuidv4} = require('uuid')
 const fs = require('fs')
 
 function generateVehicle() {
@@ -10,11 +9,11 @@ function generateVehicle() {
 
     const car_photos = [];
     for (let i = 1; i <= 8; i++) {
-        car_photos.push(`/images/tesla-model-3-2020-5yj3e1ea2lf745165-img${i}.jpg`);
+        car_photos.push(`/vehicles/tesla-model-3-2020-5yj3e1ea2lf745165-img${i}.jpg`);
     }
 
     return {
-        id: uuidv4(),
+        id: String(faker.number.bigInt()),
         auction_name: faker.helpers.arrayElement(['IAAI', 'Copart']),
         body_style: faker.vehicle.type(),
         car_keys: faker.helpers.arrayElement(['YES', 'NO', null]),
