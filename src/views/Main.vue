@@ -30,8 +30,8 @@ const handleSearch = async () => {
       </p>
     </div>
     <div class="flex flex-col gap-y-3 space-y-5">
-      <Filter/>
-      <Featured/>
+<!--      <Filter/>-->
+<!--      <Featured/>-->
       <Cars/>
       <Panel/>
     </div>
