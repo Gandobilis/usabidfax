@@ -5,27 +5,24 @@ const {navMenu} = useHeader()
 </script>
 
 <template>
-  <footer class="bg-[#6A7189] pt-6 pb-4 max-2xl:px-3">
-    <div class="mx-auto flex max-w-7xl justify-between">
-      <ul>
-        <li v-for="(link, index) in navMenu" :key="index">
-          <router-link :to="link.path">
-            <p class="text-white underline" v-text="link.title"/>
-          </router-link>
+  <footer class="bg-[#6A7189]">
+    <div
+        class="mx-auto flex max-w-7xl max-lg:flex-col items-center justify-between max-lg:gap-y-3 p-3 text-white sm:max-lg:p-5 lg:max-2xl:p-7">
+      <ul class="flex items-center justify-center gap-x-3 lg:gap-x-5">
+        <li v-for="(link, key) in navMenu" :key="key">
+          <router-link :to="link.path" class="underline" v-text="link.title"/>
         </li>
       </ul>
-      <div class="space-y-5">
-        <div class="text-sm text-white space-y-1">
-          <div class="flex justify-between space-x-7">
-            <p>
-              <font-awesome-icon class="mr-2" :icon="['fas', 'envelope']"/>
-              E-mail:
-            </p>
-            <p class="underline">usabidfax@gmail.com</p>
-          </div>
+      <div class="text-sm">
+        <div class="flex justify-between space-x-3 lg:space-x-5">
+          <p>
+            <font-awesome-icon class="mr-0.5" :icon="['fas', 'envelope']"/>
+            E-mail:
+          </p>
+          <p class="underline">usabidfax@gmail.com</p>
         </div>
-        <p class="text-sm text-white">© 2018-2023 - Not all rights reserved.</p>
       </div>
+      <p class="text-sm">© 2018-2023 - Not all rights reserved.</p>
     </div>
   </footer>
 </template>
