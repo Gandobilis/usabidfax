@@ -1,5 +1,4 @@
 <script setup>
-import {faker} from '@faker-js/faker';
 
 const props = defineProps({
   car: {
