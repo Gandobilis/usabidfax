@@ -1,14 +1,9 @@
-// Name attribute could be added to the routes object.
 const routes = [
     {
         path: '/',
         component: () => import('../views/Main.vue')
     },
     {
-        /*
-         This route should be constructed dynamically.
-         Every slug in url must be part of a some filer.
-        */
         path: '/:vin',
         component: () => import('../views/Car.vue')
     },
@@ -16,14 +11,14 @@ const routes = [
         path: '/contact',
         component: () => import('../views/Contact.vue')
     },
-    {
-        path: '/admin/car-list',
-        component: () => import('../views/CarList.vue')
-    },
-    {
-        path: '/admin/add-car',
-        component: () => import('../views/AddCar.vue')
-    }
+    // {
+    //     path: '/admin/car-list',
+    //     component: () => import('../views/CarList.vue')
+    // },
+    // {
+    //     path: '/admin/add-car',
+    //     component: () => import('../views/AddCar.vue')
+    // }
 ]
 
 export default routes

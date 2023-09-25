@@ -1,7 +1,6 @@
 <script setup>
 import MainLayout from "@/layouts/MainLayout.vue";
 import Cars from "@/components/Cars.vue";
-import Featured from "@/components/Featured.vue";
 import Panel from "@/components/Panel.vue";
 import Filter from "@/components/Filter.vue";
 import {ref} from "vue";
@@ -31,7 +30,6 @@ const handleSearch = async () => {
     </div>
     <div class="flex flex-col gap-y-3 space-y-5">
 <!--      <Filter/>-->
-<!--      <Featured/>-->
       <Cars/>
       <Panel/>
     </div>
