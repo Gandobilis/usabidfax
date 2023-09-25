@@ -1,5 +1,19 @@
 const {faker} = require('@faker-js/faker')
 const fs = require('fs')
+require("dotenv").config();
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://lashadeveloper:OFmIpLbb7NNuB3j9@cluster0.ka6csox.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+
+db.on('error', (error) => {
+    console.error('MongoDB connection error:', error);
+});
+
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
 
 function generateVehicle() {
     const cylinders = () => {
@@ -52,12 +66,29 @@ const vehicles = faker.helpers.multiple(generateVehicle, {
     count: 100
 });
 
-const carsJSON = JSON.stringify({vehicles}, null, 2);
+const Vehicle = require('../../models/Vehicle'); // Adjust the path as needed
 
-fs.writeFile('../../netlify/functions/data.json', carsJSON, 'utf8', (err) => {
-    if (err) {
-        console.error('Error writing JSON to file:', err);
-    } else {
-        console.log('JSON data has been written to cars.json');
+async function insertDataIntoMongoDB() {
+    try {
+        for (const vehicle of vehicles) {
+            const newVehicle = new Vehicle(vehicle);
+            await newVehicle.save();
+            console.log(`Inserted vehicle with ID ${newVehicle._id}`);
+        }
+        console.log('Data has been inserted into MongoDB');
+    } catch (error) {
+        console.error('Error inserting data into MongoDB:', error);
     }
-});
+}
+
+insertDataIntoMongoDB();
+
+// const carsJSON = JSON.stringify({vehicles}, null, 2);
+//
+// fs.writeFile('../../netlify/functions/data.json', carsJSON, 'utf8', (err) => {
+//     if (err) {
+//         console.error('Error writing JSON to file:', err);
+//     } else {
+//         console.log('JSON data has been written to cars.json');
+//     }
+// });

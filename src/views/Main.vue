@@ -30,7 +30,7 @@ const handleSearch = async () => {
         </p>
       </div>
       <div class="flex flex-col gap-y-3 space-y-5">
-        <Filter/>
+<!--        <Filter/>-->
         <Cars/>
 
         <div class="bg-white p-3 divide-y">

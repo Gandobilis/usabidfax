@@ -31,4 +31,4 @@ coverage
 .netlify
 
 # Env files
-.env.development
+.env
