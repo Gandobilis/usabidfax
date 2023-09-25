@@ -1,7 +1,8 @@
-import express, { Router } from 'express';
+import express, {Router} from 'express';
 import serverless from 'serverless-http';
 import data from "./data.json";
 import fs from "fs/promises";
+
 const dataPath = 'netlify/functions/data.json'
 
 const api = express();
@@ -9,7 +10,7 @@ const api = express();
 const router = Router();
 
 router.get('/cars', (req, res) => {
-    const { page, limit } = req.query;
+    const {page, limit} = req.query;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
@@ -18,34 +19,46 @@ router.get('/cars', (req, res) => {
     res.status(200).json(cars);
 });
 
+router.get('/makes', (req, res) => {
+    const cars = new Set(data.vehicles.map(car => car.make));
+
+    res.status(200).json(Array.from(cars));
+});
+router.get('/models/:make', (req, res) => {
+    const {make} = req.params;
+    const cars = data.vehicles.filter(vehicle => vehicle.make = make).map(vehicle => vehicle.model);
+
+    res.status(200).json(cars);
+});
+
 router.get('/vin/:vin', (req, res) => {
-    const { vin } = req.params;
+    const {vin} = req.params;
     const car = data.vehicles.find((vehicle) => vehicle.vin === vin);
 
     if (!car) {
-        return res.status(404).json({ message: 'Car not found' });
+        return res.status(404).json({message: 'Car not found'});
     }
 
     res.status(200).json(car);
 });
 
 router.get('/make/:make', (req, res) => {
-    const { make } = req.params;
+    const {make} = req.params;
     const cars = data.vehicles.filter((vehicle) => vehicle.make === make);
 
     if (cars.length === 0) {
-        return res.status(404).json({ message: 'No cars found with this make' });
+        return res.status(404).json({message: 'No cars found with this make'});
     }
 
     res.status(200).json(cars);
 });
 
 router.get('/model/:model', (req, res) => {
-    const { model } = req.params;
+    const {model} = req.params;
     const cars = data.vehicles.filter((vehicle) => vehicle.model === model);
 
     if (cars.length === 0) {
-        return res.status(404).json({ message: 'No cars found with this model' });
+        return res.status(404).json({message: 'No cars found with this model'});
     }
 
     res.status(200).json(cars);
@@ -57,7 +70,7 @@ const adminApiKey = process.env.VITE_ADMIN_API_KEY; // process.env.NETLIFY_API_K
 const checkApiKey = (req, res, next) => {
     const apiKey = req.headers['x-api-key'];
     if (apiKey !== adminApiKey) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(401).json({message: 'Unauthorized'});
     }
     next(); // Continue to the next middleware or route handler
 };
@@ -69,7 +82,7 @@ router.get('/all', async (req, res) => {
     // Check if the API key matches
     const apiKey = req.headers['x-api-key'];
     if (apiKey !== adminApiKey) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(401).json({message: 'Unauthorized'});
     }
 
     try {
@@ -78,7 +91,7 @@ router.get('/all', async (req, res) => {
 
         res.status(200).json(cars);
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+        res.status(500).json({message: 'Internal Server Error', error: error.message});
     }
 });
 
@@ -86,7 +99,7 @@ router.post('/create', async (req, res) => {
     // Check if the API key matches
     const apiKey = req.headers['x-api-key'];
     if (apiKey !== adminApiKey) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(401).json({message: 'Unauthorized'});
     }
 
     try {
@@ -99,15 +112,15 @@ router.post('/create', async (req, res) => {
         data.vehicles.push(newCar);
         await fs.writeFile(dataPath, JSON.stringify(data, null, 2), 'utf-8');
 
-        res.status(201).json({ message: 'Car created successfully', car: newCar });
+        res.status(201).json({message: 'Car created successfully', car: newCar});
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+        res.status(500).json({message: 'Internal Server Error', error: error.message});
     }
 });
 
 router.put('/update/:vin', async (req, res) => {
     try {
-        const { vin } = req.params;
+        const {vin} = req.params;
         const updatedCar = req.body;
         const rawData = await fs.readFile(dataPath, 'utf-8');
         const data = JSON.parse(rawData);
@@ -115,28 +128,28 @@ router.put('/update/:vin', async (req, res) => {
         const carIndex = data.vehicles.findIndex((vehicle) => vehicle.vin === vin);
 
         if (carIndex === -1) {
-            return res.status(404).json({ message: 'Car not found' });
+            return res.status(404).json({message: 'Car not found'});
         }
 
-        data.vehicles[carIndex] = { ...data.vehicles[carIndex], ...updatedCar };
+        data.vehicles[carIndex] = {...data.vehicles[carIndex], ...updatedCar};
         await fs.writeFile(dataPath, JSON.stringify(data, null, 2), 'utf-8');
 
-        res.status(200).json({ message: 'Car updated successfully', car: data.vehicles[carIndex] });
+        res.status(200).json({message: 'Car updated successfully', car: data.vehicles[carIndex]});
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+        res.status(500).json({message: 'Internal Server Error', error: error.message});
     }
 });
 
 router.delete('/delete/:vin', async (req, res) => {
     try {
-        const { vin } = req.params;
+        const {vin} = req.params;
         const rawData = await fs.readFile(dataPath, 'utf-8');
         const data = JSON.parse(rawData);
 
         const carIndex = data.vehicles.findIndex((vehicle) => vehicle.vin === vin);
 
         if (carIndex === -1) {
-            return res.status(404).json({ message: 'Car not found' });
+            return res.status(404).json({message: 'Car not found'});
         }
 
         data.vehicles.splice(carIndex, 1);
@@ -144,7 +157,7 @@ router.delete('/delete/:vin', async (req, res) => {
 
         res.status(204).send(); // No content
     } catch (error) {
-        res.status(500).json({ message: 'Internal Server Error', error: error.message });
+        res.status(500).json({message: 'Internal Server Error', error: error.message});
     }
 });
 
