@@ -2,7 +2,6 @@
 import DropDown from "@/components/DropDown.vue";
 import {onMounted, ref} from "vue";
 import axios from "axios";
-import {faker} from '@faker-js/faker'
 
 const makes = ref([]);
 const make = ref('Make');
@@ -12,7 +11,7 @@ const model = ref('Model');
 onMounted(async () => {
   const response = await axios.get('/api/makes');
   makes.value = response.data;
-  const response1 = await axios.get(`/api/models/${faker.helpers.arrayElement(makes.value)}`);
+  const response1 = await axios.get(`/api/models/${makes[0] ?? 'BMW'}`);
   models.value = response1.data;
 })
 </script>
