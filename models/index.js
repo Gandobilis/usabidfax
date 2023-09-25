@@ -17,7 +17,6 @@ const detailsSchema = new mongoose.Schema({
     car_keys: String,
     fuel: String,
     notes: String,
-    main_photo: String
 })
 
 const carSchema = new mongoose.Schema({
@@ -36,6 +35,7 @@ const carSchema = new mongoose.Schema({
     primary_damage: String,
     odometer: String,
     date_of_sale: String,
+    main_photo: String,
     details: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Details',

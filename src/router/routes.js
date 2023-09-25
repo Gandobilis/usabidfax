@@ -4,7 +4,7 @@ export default [
         component: () => import('../views/Main.vue')
     },
     {
-        path: '/:vin',
+        path: '/:id',
         component: () => import('../views/Car.vue')
     },
     {

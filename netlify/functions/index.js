@@ -21,7 +21,7 @@ const validateObjectId = (req, res, next) => {
 
 router.get('/cars', async (req, res) => {
     const page = parseInt(req.query.page) || 1
-    const limit = parseInt(req.query.limit) || 10
+    const limit = parseInt(req.query.limit) || 9
 
     const skip = (page - 1) * limit
 
@@ -29,7 +29,7 @@ router.get('/cars', async (req, res) => {
         const totalCars = await Car.countDocuments()
         const totalPages = Math.ceil(totalCars / limit)
 
-        const cars = await Car.find()
+        const cars = await Car.find().skip(skip).limit(limit)
 
         res.json({
             data: cars,
@@ -41,10 +41,23 @@ router.get('/cars', async (req, res) => {
     }
 })
 
-router.get('/cars/:id', validateObjectId, async (req, res) => {
+router.get('/car/:id', validateObjectId, async (req, res) => {
     const {id} = req.params
     try {
-        const vehicle = await Car.findById(id).exec()
+        const vehicle = await Car.findById(id).populate('photos').populate('details').exec()
+        if (!vehicle) {
+            return res.status(404).json({message: 'Car not found'})
+        }
+        res.json(vehicle)
+    } catch (error) {
+        handleErrors(res, error)
+    }
+})
+
+router.get('/cars/:vin', async (req, res) => {
+    const {vin} = req.params
+    try {
+        const vehicle = await Car.find({vin}).populate('photos').populate('details').exec()
         if (!vehicle) {
             return res.status(404).json({message: 'Car not found'})
         }

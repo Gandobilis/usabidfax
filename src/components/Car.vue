@@ -15,9 +15,9 @@ const props = defineProps({
 
 <template>
   <div class="border p-1.5 bg-[#F8F9FA] divide-y">
-    <router-link :to="'/' + car.vin">
+    <router-link :to="'/' + car._id">
       <div class="relative">
-        <img :src="faker.helpers.arrayElement(car.car_photos)" :alt="car.vin">
+        <img :src="car.main_photo" :alt="car.vin">
         <span v-if="price"
               style="clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);"
               class="bg-[#4ADD31] absolute font-bold text-white pl-4 pr-8 py-2.5 bottom-[10%]">${{ car.purchase_price }}</span>

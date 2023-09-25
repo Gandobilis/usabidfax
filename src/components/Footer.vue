@@ -3,7 +3,6 @@
     <div>
       <div class=" flex justify-between space-x-1.5">
         <p class="max-lg:hidden">
-          <font-awesome-icon class="mr-0.5" :icon="['fas', 'envelope']"/>
           E-mail:
         </p>
         <a href="mailto:usabidfax@gmail.com" class="underline hover:text-red-500 whitespace-nowrap">usabidfax@gmail.com</a>

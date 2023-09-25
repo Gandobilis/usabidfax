@@ -2,28 +2,19 @@
   <MainLayout>
     <template v-if="data" class="bg-gray-500">
       <div class="bg-white">
-        <h1 v-text="data.title + data.id" class="text-3xl font-bold p-5"/>
+        <h1 v-text="data.make + ' '+ data.model +' '+ data.year +' '+ data.engine_type +' vin: '+ data.vin"
+            class="text-3xl font-bold p-5"/>
         <div class="flex  max-lg:flex-col gap-5 border-2 p-3">
           <div class="lg:w-1/2 space-y-3">
             <Carousel id="gallery" :autoplay="2500" :items-to-show="1" :wrap-around="true" v-model="currentSlide">
-              <Slide v-for="(image, index) in data.car_photos" :key="index">
+              <Slide v-for="(image, index) in data.photos" :key="index">
                 <div class="carousel__item">
                   <img
-                      :src="image"
-                      :alt="data.id"
+                      :src="image.url"
+                      :alt="data._id"
                   />
                 </div>
               </Slide>
-              <template #addons>
-                <navigation>
-                  <template #next>
-                    <font-awesome-icon :icon="['fas', 'angle-right']" style="color: #FFF;"/>
-                  </template>
-                  <template #prev>
-                    <font-awesome-icon :icon="['fas', 'angle-left']" style="color: #FFF;"/>
-                  </template>
-                </navigation>
-              </template>
             </Carousel>
 
             <Carousel
@@ -34,14 +25,14 @@
                 ref="carousel"
                 class="space-x-7"
             >
-              <Slide class="hover:cursor-pointer" v-for="(image, index) in data.car_photos"
+              <Slide class="hover:cursor-pointer" v-for="(image, index) in data.photos"
                      :key="index"
                      @click="slideTo(index - 1)">
                 <div class="carousel__item">
                   <img
                       class="mx-1"
-                      :src="image"
-                      :alt="data.id"
+                      :src="image.url"
+                      :alt="data._id"
                   />
                 </div>
               </Slide>
@@ -166,7 +157,7 @@ const slideTo = (val) => {
 }
 
 onMounted(async () => {
-  await fetchData(`/api/vin/${route.params.vin}`);
-  console.log(data)
+  await fetchData(`/api/car/${route.params.id}`);
+  console.log(data.value)
 })
 </script>
