@@ -3,6 +3,7 @@ import MainLayout from "@/layouts/MainLayout.vue";
 import Cars from "@/components/Cars.vue";
 import Filter from "@/components/Filter.vue";
 import {ref} from "vue";
+import {VueAwesomePaginate} from "vue-awesome-paginate";
 
 const vin = ref('');
 const handleSearch = async () => {
@@ -31,7 +32,15 @@ const handleSearch = async () => {
       </div>
       <div class="flex flex-col gap-y-3 space-y-5">
 <!--        <Filter/>-->
-        <Cars/>
+        <Cars :cars="c" v-if="data"/>
+        <h1 v-else-if="isLoading">Loading...</h1>
+        <vue-awesome-paginate
+            :total-items="100"
+            :items-per-page="9"
+            :max-pages-shown="10"
+            v-model="currentPage"
+            :on-click="onClickHandler"
+        />
 
         <div class="bg-white p-3 divide-y">
           <h1 class="pb-3 lg:text-xl font-bold">
