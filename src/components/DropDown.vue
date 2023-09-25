@@ -29,7 +29,7 @@ const changeFloor = () => {
   <div class="relative">
     <div
         @click="toggleDropDown"
-        class="flex w-full cursor-pointer items-center rounded-md border border-black border-opacity-40 py-3 pr-3 pl-4 font-medium leading-6 space-x-2 focus:outline-0">
+        class="flex w-full cursor-pointer items-center rounded-sm border p-2.5 font-bold leading-6 space-x-2 focus:outline-0">
       <p v-text="selected"/>
       <font-awesome-icon :icon="['fas', 'caret-down']" size="xs" :class="{'rotate-180': showDropDown}"/>
     </div>
