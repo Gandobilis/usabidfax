@@ -3,17 +3,9 @@ import serverless from 'serverless-http'
 import mongoose from 'mongoose'
 
 const {Photo, Details, Car} = require('../../models')
-
 const api = express()
 const router = express.Router()
-
-mongoose.connect(
-    process.env.MONGODB_URI,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }
-)
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
 
 const handleErrors = (res, error) => {
     console.error('Error:', error)
@@ -50,26 +42,26 @@ router.get('/cars', async (req, res) => {
 })
 
 router.get('/cars/:id', validateObjectId, async (req, res) => {
-    const {id} = req.params;
+    const {id} = req.params
     try {
-        const vehicle = await Car.findById(id).exec();
+        const vehicle = await Car.findById(id).exec()
         if (!vehicle) {
-            return res.status(404).json({message: 'Car not found'});
+            return res.status(404).json({message: 'Car not found'})
         }
-        res.json(vehicle);
+        res.json(vehicle)
     } catch (error) {
-        handleErrors(res, error);
+        handleErrors(res, error)
     }
-});
+})
 
 router.get('/makes', async (req, res) => {
     try {
-        const makes = await Car.distinct('make').exec();
-        res.json(makes);
+        const makes = await Car.distinct('make').exec()
+        res.json(makes)
     } catch (error) {
-        handleErrors(res, error);
+        handleErrors(res, error)
     }
-});
+})
 
 router.get('/models/:make', async (req, res) => {
     const {make} = req.params
