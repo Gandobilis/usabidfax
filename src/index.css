@@ -1,9 +1,10 @@
-@import "src/assets/css/fonts.css";
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    font-family: 'Lato', sans-serif;
+}
 
 .container {
     @apply flex items-center justify-between max-w-7xl mx-auto p-1.5
@@ -35,7 +36,7 @@
 @media (max-width: 640px) {
     .carousel__prev,
     .carousel__next {
-       display: none !important;
+        display: none !important;
     }
 }
 

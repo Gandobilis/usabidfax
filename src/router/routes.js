@@ -1,4 +1,4 @@
-const routes = [
+export default [
     {
         path: '/',
         component: () => import('../views/Main.vue')
@@ -20,5 +20,3 @@ const routes = [
     //     component: () => import('../views/AddCar.vue')
     // }
 ]
-
-export default routes
