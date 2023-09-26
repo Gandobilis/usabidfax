@@ -5,7 +5,6 @@ const photoSchema = new mongoose.Schema({
 })
 
 const detailsSchema = new mongoose.Schema({
-    id: String,
     seller: String,
     doc_type: String,
     location: String,
@@ -20,7 +19,6 @@ const detailsSchema = new mongoose.Schema({
 })
 
 const carSchema = new mongoose.Schema({
-    id: String,
     purchase_price: Number,
     make: String,
     model: String,
