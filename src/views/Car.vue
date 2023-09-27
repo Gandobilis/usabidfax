@@ -67,7 +67,7 @@
             />
             <Entry class=""
                    _key="Year"
-                   :value="data.year"
+                   :value="String(data.year)"
             />
             <Entry class=""
                    _key="Condition"
@@ -158,6 +158,5 @@ const slideTo = (val) => {
 
 onMounted(async () => {
   await fetchData(`/api/car/${route.params.id}`);
-  console.log(data.value)
 })
 </script>

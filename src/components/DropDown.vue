@@ -31,7 +31,6 @@ const changeFloor = () => {
         @click="toggleDropDown"
         class="flex w-full cursor-pointer items-center rounded-sm border p-2.5 font-bold leading-6 space-x-2 focus:outline-0">
       <p v-text="selected"/>
-      <font-awesome-icon :icon="['fas', 'caret-down']" size="xs" :class="{'rotate-180': showDropDown}"/>
     </div>
     <div :class="showDropDown ? 'block' : 'hidden'"
          class="absolute top-14 z-10 w-full rounded-md border border-black border-opacity-40 bg-white pr-1 pl-3 py-2.5">

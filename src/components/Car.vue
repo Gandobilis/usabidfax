@@ -24,7 +24,7 @@ const props = defineProps({
       <div>
         <p class="font-bold"
            v-text="
-           `${car.make} ${car.model} ${car.year} ${car.color} ${car.engine_type} vin: ${car.vin}`
+           `${car.make} ${car.model} ${String(car.year)} ${car.color} ${car.engine_type} vin: ${car.vin}`
       "/>
       </div>
     </router-link>
