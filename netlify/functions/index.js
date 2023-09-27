@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 const {Photo, Details, Car} = require('../../models')
 const api = express()
 const router = express.Router()
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://lashadeveloper:OFmIpLbb7NNuB3j9@cluster0.ka6csox.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 
 const handleErrors = (res, error) => {
     console.error('Error:', error)
