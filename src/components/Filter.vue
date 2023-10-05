@@ -9,9 +9,9 @@ const models = ref([]);
 const model = ref('Model');
 
 onMounted(async () => {
-  const response = await axios.get('/api/makes');
+  const response = await axios.get('http://127.0.0.1:8000/api/car/makes');
   makes.value = response.data;
-  const response1 = await axios.get(`/api/models/${makes[0] ?? 'BMW'}`);
+  const response1 = await axios.get(`http://127.0.0.1:8000/api/car/iste/models`);
   models.value = response1.data;
 })
 </script>

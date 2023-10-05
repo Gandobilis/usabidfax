@@ -14,7 +14,7 @@ const props = defineProps({
 
 <template>
   <div class="border p-1.5 bg-[#F8F9FA] divide-y">
-    <router-link :to="'/' + car._id">
+    <router-link :to="'/' + car.id">
       <div class="relative">
         <img :src="car.main_photo" :alt="car.vin">
         <span v-if="price"

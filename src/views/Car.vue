@@ -32,7 +32,7 @@
                   <img
                       class="mx-1"
                       :src="image.url"
-                      :alt="data._id"
+                      :alt="data.id"
                   />
                 </div>
               </Slide>
@@ -79,15 +79,15 @@
             />
             <Entry class="bg-blue-500 [&_*]:text-white"
                    _key="Seller"
-                   :value="data.seller"
+                   :value="data.details.seller"
             />
             <Entry class=""
                    _key="Documents"
-                   :value="data.doc_type ?? undefined"
+                   :value="data.details.doc_type"
             />
             <Entry class=""
                    _key="Location:"
-                   :value="data.location"
+                   :value="data.details.location"
             />
             <Entry class=""
                    _key="Primary Damage"
@@ -95,19 +95,19 @@
             />
             <Entry class=""
                    _key="Secondary Damage"
-                   :value="data.secondary_damage ?? undefined"
+                   :value="data.details.secondary_damage"
             />
             <Entry class=""
                    _key="Estimated Retail Value"
-                   :value="String(data.est_retail_value ?? undefined)"
+                   :value="String(data.details.est_retail_value)"
             />
             <Entry class=""
                    _key="Estimated Repair Cost"
-                   :value="String(data.est_repair_value ?? undefined)"
+                   :value="String(data.details.est_repair_value)"
             />
             <Entry class=""
                    _key="Transmission"
-                   :value="data.transmission ?? undefined"
+                   :value="data.details.transmission"
             />
             <Entry class=""
                    _key="Body color"
@@ -115,19 +115,19 @@
             />
             <Entry class=""
                    _key="Drive"
-                   :value="data.drive"
+                   :value="data.details.drive"
             />
             <Entry class=""
                    _key="Fuel"
-                   :value="data.fuel"
+                   :value="data.details.fuel"
             />
             <Entry class=""
                    _key="Keys"
-                   :value="data.car_keys"
+                   :value="data.details.car_keys"
             />
             <Entry class=""
                    _key="Notes"
-                   :value="data.notes ?? undefined"
+                   :value="data.details.notes"
             />
           </div>
         </div>
@@ -157,6 +157,7 @@ const slideTo = (val) => {
 }
 
 onMounted(async () => {
-  await fetchData(`/api/car/${route.params.id}`);
+  await fetchData(`http://127.0.0.1:8000/api/cars/${route.params.id}`);
+  console.log(data.value);
 })
 </script>
